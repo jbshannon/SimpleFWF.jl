@@ -1,4 +1,4 @@
-# `SimpleFWF.jl`
+# SimpleFWF.jl
 
 Simple proof-of-concept reader for fixed-width files in Julia. Based on [this discussion](https://discourse.julialang.org/t/reading-fixed-width-files-a-preliminary-solution/60525) on the JuliaLang Discourse.
 
