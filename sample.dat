@@ -1,0 +1,12 @@
+COLUMN A COLUMN B                          COLUMN C COLUMN D
+       1 SOME VERY LONG STRING WITH SPACES 0.5      01/01/21
+       2 ANOTHER VERY LONG STRING          1.0      02/01/21
+       3 MORE STRINGS                      1.5      03/01/21
+       4 STILL MORE STRINGS                2.0      04/01/21
+       5 FIVE STRINGS                      2.5      05/01/21
+       6 SIX STRINGS                       3.0      06/01/21
+       7 SIX PLUS ONE STRINGS               3.5      07/01/21
+       8 EIGHT STRINGS                     4.0      08/01/21
+       9 NINE STRINGS                      4.5      09/01/21
+      10 TEN STRINGS                       5.0      10/01/21
+      11 ELEVEN STRINGS                    5.5      11/01/21
