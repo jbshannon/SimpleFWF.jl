@@ -10,7 +10,7 @@ function fwfline(line, ranges; stripstr=true)
         ldata = stripstr ? strip(SubString(line, r)) : SubString(line, r)
         push!(data, ldata)
     end
-    data
+    return data
 end
 
 """
@@ -36,7 +36,7 @@ function readfwf(source, ranges; stripstr=true)
     for line in lines
         push!(df, fwfline(line, ranges; stripstr))
     end
-    df
+    return df
 end
 
 end
