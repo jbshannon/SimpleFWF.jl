@@ -2,7 +2,7 @@ module SimpleFWF
 
 using DataFrames, CSV
 
-export readfwf, readfwf!
+export readfwf
 
 function fwfline(line, ranges; stripstr=true)
     data = String[]
