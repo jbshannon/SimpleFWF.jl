@@ -39,16 +39,4 @@ function readfwf(source, ranges; stripstr=true)
     df
 end
 
-function readfwf!(df, source, ranges; stripstr=true)
-    lines = eachline(source)
-
-    # Ignore first line
-    firstline, lines = Base.Iterators.peel(lines)
-
-    # Read data
-    for line in lines
-        push!(df, fwfline(line, ranges; stripstr))
-    end
-end
-
 end

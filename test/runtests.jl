@@ -1,22 +1,30 @@
-include("main.jl")
-using DataFrames, CSV
+using SimpleFWF
+using Test
 
-## Set parameters
-source = "sample.dat"
-ranges = (1:9, 10:43, 44:52, 53:60)
+@testset "SimpleF.jl" begin
+    # Write your tests here.
+end
 
-## Get a messed-up DataFrame using CSV.jl
-df = CSV.File(source; delim=' ', ignorerepeated=true) |> DataFrame
 
-## Try the standard reader
-df = SimpleFWF.readfwf(source, ranges)
+# include("main.jl")
+# using DataFrames, CSV
 
-## Try the mutating reader
-# Construct df manually
-firstline = readline(source)
-colnames = SimpleFWF.fwfline(firstline, ranges)
-columns = Dict(Symbol(c) => String[] for c in colnames)
-df = DataFrame(columns)
+# ## Set parameters
+# source = "sample.dat"
+# ranges = (1:9, 10:43, 44:52, 53:60)
 
-# Call reader
-SimpleFWF.readfwf!(df, source, ranges)
+# ## Get a messed-up DataFrame using CSV.jl
+# df = CSV.File(source; delim=' ', ignorerepeated=true) |> DataFrame
+
+# ## Try the standard reader
+# df = SimpleFWF.readfwf(source, ranges)
+
+# ## Try the mutating reader
+# # Construct df manually
+# firstline = readline(source)
+# colnames = SimpleFWF.fwfline(firstline, ranges)
+# columns = Dict(Symbol(c) => String[] for c in colnames)
+# df = DataFrame(columns)
+
+# # Call reader
+# SimpleFWF.readfwf!(df, source, ranges)
