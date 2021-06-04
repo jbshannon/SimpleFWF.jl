@@ -23,12 +23,16 @@ Reads a fixed-width file `source` into a `DataFrame` using pre-defined column wi
 julia> df = readfwf("sample.dat", (10:43, 53:60))
 ```
 """
-function readfwf(source, ranges; stripstr=true)
+function readfwf(source, ranges; stripstr=true, headers=true)
     lines = eachline(source)
 
     # Construct DataFrame
-    firstline, lines = Base.Iterators.peel(lines)
-    colnames = fwfline(firstline, ranges)
+    if headers
+        firstline, lines = Base.Iterators.peel(lines)
+        colnames = fwfline(firstline, ranges)
+    else
+        colnames = ["x_$i" for i in eachindex(ranges)]
+    end
     columns = Dict(Symbol(c) => String[] for c in colnames)
     df = DataFrame(columns)
 
