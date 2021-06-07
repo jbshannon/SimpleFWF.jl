@@ -14,7 +14,7 @@ function fwfline(line, ranges; stripstr=true)
 end
 
 """
-    readfwf(source, ranges; stripstr=true) -> DataFrame
+    readfwf(source, ranges; stripstr=true, headers=true) -> DataFrame
 
 Reads a fixed-width file `source` into a `DataFrame` using pre-defined column widths in `ranges`.
 
