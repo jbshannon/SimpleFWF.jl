@@ -2,7 +2,7 @@ module SimpleFWF
 
 using DataFrames, CSV
 
-export readfwf, readfwf!
+export readfwf
 
 function fwfline(line, ranges; stripstr=true)
     data = String[]
@@ -10,7 +10,7 @@ function fwfline(line, ranges; stripstr=true)
         ldata = stripstr ? strip(SubString(line, r)) : SubString(line, r)
         push!(data, ldata)
     end
-    data
+    return data
 end
 
 """
@@ -23,12 +23,16 @@ Reads a fixed-width file `source` into a `DataFrame` using pre-defined column wi
 julia> df = readfwf("sample.dat", (10:43, 53:60))
 ```
 """
-function readfwf(source, ranges; stripstr=true)
+function readfwf(source, ranges; stripstr=true, headers=true)
     lines = eachline(source)
 
     # Construct DataFrame
-    firstline, lines = Base.Iterators.peel(lines)
-    colnames = fwfline(firstline, ranges)
+    if headers
+        firstline, lines = Base.Iterators.peel(lines)
+        colnames = fwfline(firstline, ranges)
+    else
+        colnames = ["x_$i" for i in eachindex(ranges)]
+    end
     columns = Dict(Symbol(c) => String[] for c in colnames)
     df = DataFrame(columns)
 
@@ -36,19 +40,7 @@ function readfwf(source, ranges; stripstr=true)
     for line in lines
         push!(df, fwfline(line, ranges; stripstr))
     end
-    df
-end
-
-function readfwf!(df, source, ranges; stripstr=true)
-    lines = eachline(source)
-
-    # Ignore first line
-    firstline, lines = Base.Iterators.peel(lines)
-
-    # Read data
-    for line in lines
-        push!(df, fwfline(line, ranges; stripstr))
-    end
+    return df
 end
 
 end
