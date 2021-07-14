@@ -1,5 +1,6 @@
 # SimpleFWF.jl
 
+[![CI](https://github.com/EarthGoddessDude/SimpleFWF.jl/actions/workflows/CI/badge.svg)]
 [![Project Status: Concept – Minimal or no implementation has been done yet, or the repository is only intended to be a limited example, demo, or proof-of-concept.](https://www.repostatus.org/badges/latest/concept.svg)](https://www.repostatus.org/#concept)
 
 Simple proof-of-concept reader for fixed-width files in Julia. Based on [this discussion](https://discourse.julialang.org/t/reading-fixed-width-files-a-preliminary-solution/60525) on the JuliaLang Discourse.
